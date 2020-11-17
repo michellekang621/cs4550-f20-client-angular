@@ -7,6 +7,7 @@ import { CourseNavigatorComponent } from './course-navigator/course-navigator.co
 import {FormsModule} from '@angular/forms';
 import {CourseService} from '../services/course-service';
 import {ModuleService} from '../services/module-service';
+import {LessonService} from '../services/lesson-service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {ModuleService} from '../services/module-service';
     ],
   providers: [
     CourseService,
-    ModuleService
+    ModuleService,
+    LessonService
   ],
   bootstrap: [AppComponent]
 })

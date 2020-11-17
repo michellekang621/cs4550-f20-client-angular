@@ -36,7 +36,9 @@
     <div class="col-6">
       <ul class='list-group'>
         <li class='list-group-item active'>Modules</li>
-        <li *ngFor="let module of modules"
+        <li (click)="selectModule(module)"
+            [ngClass]="{'list-group-item-success': module === selectedModule}"
+          *ngFor="let module of modules"
           class='list-group-item'>
           {{module.title}}
           <button (click)="deleteModule(module)">
@@ -50,5 +52,19 @@
         </li>
       </ul>
     </div>
+  </div>
+  <div class="col-6">
+    <ul class='list-group'>
+      <li class='list-group-item active'>Lessons</li>
+      <li *ngFor="let lesson of lessons"
+          class='list-group-item'>
+        {{lesson.title}}
+      </li>
+      <li class="list-group-item">
+        <button (click)="createLessonForModule(selectedModule)">
+          Create
+        </button>
+      </li>
+    </ul>
   </div>
 </div>

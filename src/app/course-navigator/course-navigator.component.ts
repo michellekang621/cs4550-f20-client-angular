@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CourseService} from '../../services/course-service';
 import {ModuleService} from '../../services/module-service';
+import {LessonService} from '../../services/lesson-service';
 
 @Component({
   selector: 'app-course-navigator',
@@ -17,8 +18,15 @@ export class CourseNavigatorComponent implements OnInit {
 
   modules = [];
 
+  selectedModule = {
+    title: ''
+  };
+
+  lessons = [];
+
   constructor(private courseService: CourseService,
-              private moduleService: ModuleService) {}
+              private moduleService: ModuleService,
+              private lessonService: LessonService) {}
 
   createCourse = () =>
     this.courseService.createCourse()
@@ -27,6 +35,10 @@ export class CourseNavigatorComponent implements OnInit {
   createModuleForCourse = (course) =>
     this.moduleService.createModuleForCourse(course)
       .then(actualModule => this.modules.push(actualModule))
+
+  createLessonForModule = (module) =>
+    this.lessonService.createLessonForModule(module)
+      .then(actualLesson => this.lessons.push(actualLesson))
 
   deleteCourse = (course) =>
     this.courseService.deleteCourse(course)
@@ -40,6 +52,12 @@ export class CourseNavigatorComponent implements OnInit {
     this.selectedCourse = course;
     this.moduleService.findModulesForCourse(course)
       .then(modules => this.modules = modules);
+  }
+
+  selectModule = (module) => {
+    this.selectedModule = module;
+    this.lessonService.findLessonsForModule(module)
+      .then(lessons => this.lessons = lessons);
   }
 
   editing = (course: { editing: boolean; }) =>

@@ -7,7 +7,7 @@ export class ModuleService {
       .then(response => response.json())
 
   createModuleForCourse = (course) =>
-    fetch(`http://wbdv-generic-server.herokuapp.com/api/001418910/courses/${course._id}/modules`,{
+    fetch(`http://wbdv-generic-server.herokuapp.com/api/001418910/courses/${course._id}/modules`, {
       method: 'POST',
       body: JSON.stringify({title: 'New Module'}),
       headers: {

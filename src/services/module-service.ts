@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class ModuleService {
-  findModulesForCourse = (course) =>
-    fetch(`http://wbdv-generic-server.herokuapp.com/api/001418910/courses/${course._id}/modules`)
+  findModulesForCourse = (courseId) =>
+    fetch(`http://wbdv-generic-server.herokuapp.com/api/001418910/courses/${courseId}/modules`)
       .then(response => response.json())
 
   createModuleForCourse = (course) =>

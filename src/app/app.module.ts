@@ -8,11 +8,19 @@ import {FormsModule} from '@angular/forms';
 import {CourseService} from '../services/course-service';
 import {ModuleService} from '../services/module-service';
 import {LessonService} from '../services/lesson-service';
+import { CourseTableComponent } from './course-table/course-table.component';
+import { ModuleListComponent } from './module-list/module-list.component';
+import { LessonTabsComponent } from './lesson-tabs/lesson-tabs.component';
+import { CourseViewerComponent } from './course-viewer/course-viewer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CourseNavigatorComponent
+    CourseNavigatorComponent,
+    CourseTableComponent,
+    ModuleListComponent,
+    LessonTabsComponent,
+    CourseViewerComponent
   ],
     imports: [
         BrowserModule,

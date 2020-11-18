@@ -6,6 +6,10 @@ export class CourseService {
     fetch('http://wbdv-generic-server.herokuapp.com/api/001418910/courses')
       .then(response => response.json())
 
+  findCourseById = (courseId) =>
+    fetch(`http://wbdv-generic-server.herokuapp.com/api/001418910/courses/${courseId}`)
+      .then(response => response.json())
+
   createCourse = () =>
     fetch('http://wbdv-generic-server.herokuapp.com/api/001418910/courses', {
       method: 'POST',

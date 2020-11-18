@@ -9,11 +9,13 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class CourseViewerComponent implements OnInit {
 
-  courses = [];
   courseId = '';
+  course = {
+    title: ''
+  };
 
   constructor(private activatedRoute: ActivatedRoute,
-              private service: CourseService) { }
+              private courseService: CourseService) { }
 
   ngOnInit(): void {
 
@@ -23,8 +25,7 @@ export class CourseViewerComponent implements OnInit {
       }
     });
 
-    this.service.fetchAllCourses()
-      .then(courses => this.courses = courses);
+    this.courseService.findCourseById(this.courseId)
+      .then(course => this.course = course);
   }
-
 }

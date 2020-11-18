@@ -1,22 +1,15 @@
-<h1>Course Viewer</h1>
-
+<div class="row header-padding">
+  <i class="fa fa-times-circle button-size col-auto"
+     routerLink="/courses">
+  </i>
+  <h1>{{course.title}}</h1>
+</div>
 <div class="row">
-  <div class="col-6">
-    <ul>
-      <li class="list-group-item active">Courses</li>
-      <li class="list-group-item"
-          *ngFor="let course of courses"
-          [ngClass]="{'active': course._id === this.courseId}">
-        <a routerLink="/courses/{{course._id}}/modules">
-          {{course.title}}
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-6">
+  <div class="col-6 modules-padding">
     <app-module-list></app-module-list>
   </div>
-</div>
 
-<app-lesson-tabs></app-lesson-tabs>
+  <div class="col-6 lessons-padding">
+    <app-lesson-tabs></app-lesson-tabs>
+  </div>
+</div>

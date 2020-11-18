@@ -10,6 +10,8 @@ import {ModuleService} from '../../services/module-service';
 export class ModuleListComponent implements OnInit {
 
   modules = [];
+  moduleId = '';
+  courseId = '';
 
   constructor(private activatedRoute: ActivatedRoute,
               private moduleService: ModuleService) {
@@ -17,7 +19,15 @@ export class ModuleListComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      console.log(params);
+
+      if (typeof params.courseId) {
+        this.courseId = params.courseId;
+      }
+
+      if (typeof params.moduleId) {
+        this.moduleId = params.moduleId;
+      }
+
       const courseId = params.courseId;
       if (typeof courseId !== 'undefined') {
         this.moduleService.findModulesForCourse(courseId)

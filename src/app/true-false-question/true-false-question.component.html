@@ -1,1 +1,35 @@
-<p>true-false-question works!</p>
+<div>
+  <div class="form-group row">
+      <h2 class="col-auto">{{question.question}}</h2>
+        <i class="col-auto float-right"
+          [ngClass]="{'fa fa-check text-success': selectedAnswer === question.correct && grading}"
+           [ngClass]="{'fa fa-times text-danger': selectedAnswer !== question.correct && grading && selectedAnswer === selectedAnswer}"></i>
+  </div>
+  <ul class="list-group list-padding">
+    <li class="list-group-item"
+        [ngClass]="{'list-group-item-success': 'true' === question.correct && grading}"
+        [ngClass]="{'list-group-item-danger': 'true' !== question.correct && 'true' === selectedAnswer && grading}">
+      <input class="form-check-input" type="radio" name="{{question._id}}" id="true" (click)="selectChoice('true')">
+      <label for="true">
+        True
+      </label>
+      <i [ngClass]="{'fa fa-check': 'true' === question.correct && grading}"
+         [ngClass]="{'fa fa-times': 'true' !== question.correct && grading && 'true' === selectedAnswer}"></i>
+    </li>
+
+    <li class="list-group-item"
+        [ngClass]="{'list-group-item-success': 'false' === question.correct && grading}"
+        [ngClass]="{'list-group-item-danger': 'false' !== question.correct && 'false' === selectedAnswer && grading}">
+      <input class="form-check-input" type="radio" name="{{question._id}}" id="false" (click)="selectChoice('false')">
+      <label for="false">
+        False
+      </label>
+      <i [ngClass]="{'fa fa-check': 'false' === question.correct && grading}"
+         [ngClass]="{'fa fa-times': 'false' !== question.correct && grading && 'false' === selectedAnswer}"></i>
+    </li>
+  </ul>
+  <p>Your answer: {{selectedAnswer}}</p>
+  <button type="button" class="btn btn-success" (click)="grade()">
+    Grade
+  </button>
+</div>

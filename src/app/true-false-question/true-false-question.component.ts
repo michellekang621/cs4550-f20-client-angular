@@ -1,4 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import {EventEmitter} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+
 // import {faCheck, faTimes} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,9 +12,21 @@ import {Component, Input, OnInit} from '@angular/core';
 export class TrueFalseQuestionComponent implements OnInit {
 
   @Input()
-  question = {_id: '', title: '', question: '', answer: '', correct: ''};
+  question = {_id: '', title: '', type: '', choices: [], correct: '', question: ''};
+  @Input()
+  answer = '';
+
   grading = false;
   selectedAnswer = '';
+
+  @Output()
+  answerChange = new EventEmitter<string>();
+  submitAnswer = () =>
+    this.answerChange.emit(this.answer)
+
+  // @Input()
+  // question = {_id: '', title: '', question: '', answer: '', correct: ''};
+
   // faCheck = faCheck; faTimes = faTimes;
   grade = () =>
     this.grading = true

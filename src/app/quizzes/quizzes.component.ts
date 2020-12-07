@@ -19,8 +19,10 @@ export class QuizzesComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.courseId = params.courseId;
+      console.log(this.courseId);
       this.service.findAllQuizzes()
         .then(quizzes => this.quizzes = quizzes);
+      console.log(this.quizzes);
     });
   }
 

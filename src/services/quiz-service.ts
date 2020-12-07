@@ -7,4 +7,5 @@ export class QuizzesServiceClient {
   findQuizById = (qid) =>
     fetch(`http://localhost:3000/api/quizzes/${qid}`)
       .then(response => response.json())
+
 }
